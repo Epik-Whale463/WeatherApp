@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.38/build/spline-viewer.js"></script>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #000000;
+            text-align: center;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            height: 100vh;
+            overflow: hidden; 
+            position: relative;
+        }
+
+        #splineBackground {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 108%;
+            z-index:0;  
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(50px);
+            animation: floatIn 1s ease-in-out forwards;
+            opacity: 0.6;
+        }
+
+        form:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            opacity: 0.9;
+
+        }
+
+        label {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #27ae60;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #219653;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatIn {
+            from {
+                transform: translateY(50px);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+
+
+        .container{
+            display: inline-flex;
+            justify-content: start;
+            position: relative;
+            right: 25rem;
+            height:70vh;
+            max-width:fit-content;
+        }
+
+
+        @media only screen and (max-width: 1008px) {
+
+
+            .container{
+                right: 0rem;
+                display: inline-flex;
+                justify-content: start;
+                position: relative;
+                height: fit-content;
+                max-width:fit-content;
+            }
+
+
+            #splineBackground {
+                position:fixed;
+                width: 100%;
+                height: 115%;
+                z-index:0; 
+            }
+        }
+
+      
+    </style>
+</head>
+<body>
+   
+    <div id="splineBackground"></div>
+
+    <div class="container">
+        <form action="/weather" method="post" class="mt-4">
+        <h1 class="mt-5">Welcome to the Weather App</h1>
+
+            <div class="form-group">
+                <label for="city">Enter City:</label>
+                <input type="text" id="city" name="city" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-success">Get Weather</button>
+        </form>
+    </div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+         
+        const splineViewerContainer = document.getElementById('splineBackground');
+        const splineViewer = document.createElement('spline-viewer');
+        splineViewer.setAttribute('url', 'https://prod.spline.design/80HDgw0Aye7ZOB7r/scene.splinecode');
+        splineViewerContainer.appendChild(splineViewer);
+    </script>
+
+</body>
+</html>
